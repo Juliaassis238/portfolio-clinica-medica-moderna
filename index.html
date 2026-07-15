@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head><link as_="image" href="hero.webp" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clínica Vitalis — Medicina Integrada de Excelência</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&amp;family=Source+Sans+3:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  img { opacity: 0; transition: opacity 0.5s ease-in; }
+  img.loaded { opacity: 1; }
+
+  img { opacity: 0; transition: opacity 0.5s ease-in; }
+  img.loaded { opacity: 1; }
+
+  img { opacity: 0; transition: opacity 0.5s ease-in; }
+  img.loaded { opacity: 1; }
+
+  img { opacity: 0; transition: opacity 0.5s ease-in; }
+  img.loaded { opacity: 1; }
+
+:root{
+  --bg:#F7FAFC;
+  --navy:#1B4B66;
+  --navy-deep:#123245;
+  --sage:#7FB3B0;
+  --amber:#E8B86D;
+  --ink:#1E2A30;
+  --line:rgba(27,75,102,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{width:100%;overflow-x:hidden;background:var(--bg);color:var(--ink);font-family:'Source Sans 3',sans-serif;overflow-x:hidden;}
+h1,h2,h3,.display{font-family:'Playfair Display',serif;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+
+header{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:.4s;}
+header.scrolled{background:rgba(247,250,252,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line);}
+nav{display:flex;justify-content:space-between;align-items:center;}
+.logo{font-size:23px;font-weight:600;color:var(--navy-deep);letter-spacing:.3px;}
+.logo span{color:var(--amber);}
+.navlinks{display:flex;gap:34px;font-size:14.5px;align-items:center;}
+.navlinks a{color:var(--navy-deep);}
+.navcta{background:var(--navy);color:#fff;padding:11px 24px;border-radius:6px;font-size:13.5px;}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.burger span{width:24px;height:2px;background:var(--navy);}
+
+/* hero with animated waveform bg */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding-top:100px;background:
+    linear-gradient(180deg,rgba(234,242,244,.88) 0%,rgba(247,250,252,.97) 100%),
+    url("hero_clinic.webp") center/cover;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;opacity:.5;}
+.hero-bg svg{width:100%;height:100%;}
+.hero-content{position:relative;z-index:2;text-align:center;width:100%;}
+.eyebrow{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--sage);margin-bottom:22px;font-weight:600;}
+.hero h1{font-size:clamp(38px,6vw,68px);color:var(--navy-deep);line-height:1.12;max-width:900px;margin:0 auto;}
+.hero h1 em{color:var(--amber);font-style:italic;}
+.hero p{max-width:560px;margin:26px auto 0;color:#4a5c65;font-size:17px;line-height:1.7;}
+.hero-actions{display:flex;gap:18px;justify-content:center;margin-top:40px;}
+.btn-primary{background:var(--navy);color:#fff;padding:16px 34px;border-radius:6px;font-size:14.5px;transition:.3s;}
+.btn-primary:hover{background:var(--navy-deep);}
+.btn-outline{border:1px solid var(--navy);color:var(--navy);padding:16px 34px;border-radius:6px;font-size:14.5px;}
+
+.specialty-strip{display:flex;justify-content:center;gap:0;flex-wrap:wrap;margin-top:70px;border-top:1px solid var(--line);padding-top:36px;}
+.specialty-strip div{padding:0 34px;text-align:center;border-right:1px solid var(--line);}
+.specialty-strip div:last-child{border-right:none;}
+.specialty-strip .num{font-family:'Playfair Display',serif;font-size:32px;color:var(--navy);}
+.specialty-strip .lbl{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#6b7d85;margin-top:6px;}
+
+section{padding:110px 0;}
+.section-head{text-align:center;max-width:680px;margin:0 auto 64px;}
+.section-head .eyebrow{color:var(--amber);}
+.section-head h2{font-size:clamp(30px,4vw,44px);color:var(--navy-deep);margin-top:14px;}
+.section-head p{color:#5b6c73;margin-top:16px;font-size:15.5px;line-height:1.7;}
+
+/* specialties grid */
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+.spec-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px -18px rgba(27,75,102,.25);transition:.4s;}
+.spec-card:hover{transform:translateY(-10px);box-shadow:0 30px 50px -20px rgba(27,75,102,.3);}
+.spec-card img{height:200px;width:100%;object-fit:cover;}
+.spec-card .body{width:100%;overflow-x:hidden;padding:28px;}
+.spec-card h3{font-size:20px;color:var(--navy-deep);margin-bottom:10px;}
+.spec-card p{font-size:14px;color:#5b6c73;line-height:1.6;}
+.spec-card .tag{display:inline-block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);margin-bottom:10px;}
+
+/* interactive tabbed doctors carousel */
+.team{background:var(--navy);color:#fff;}
+.team .section-head h2, .team .section-head p{color:#fff;}
+.team-carousel{position:relative;}
+.team-track{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:10px;}
+.team-track::-webkit-scrollbar{display:none;}
+.doc-card{min-width:270px;scroll-snap-align:start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;overflow:hidden;text-align:center;padding-bottom:24px;}
+.doc-card img{width:100%;height:280px;object-fit:cover;}
+.doc-card h3{margin-top:20px;font-size:19px;}
+.doc-card .role{color:var(--amber);font-size:13px;margin-top:6px;letter-spacing:.5px;}
+.carousel-nav{display:flex;gap:12px;justify-content:center;margin-top:34px;}
+.carousel-nav button{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;cursor:pointer;font-size:18px;transition:.3s;}
+.carousel-nav button:hover{background:#fff;color:var(--navy);}
+
+/* process timeline */
+.process-list{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+.process-item{border-top:2px solid var(--amber);padding-top:22px;}
+.process-item .step{font-family:'Playfair Display',serif;font-size:15px;color:var(--sage);}
+.process-item h3{font-size:19px;color:var(--navy-deep);margin:12px 0 10px;}
+.process-item p{font-size:14px;color:#5b6c73;line-height:1.6;}
+.process-banner{width:100%;height:300px;object-fit:cover;border-radius:14px;margin-top:56px;}
+
+/* gallery masonry */
+.gallery-grid{columns:3;column-gap:18px;}
+.gallery-grid img{width:100%;margin-bottom:18px;border-radius:12px;break-inside:avoid;transition:.4s;}
+.gallery-grid img:hover{filter:brightness(1.06);}
+
+/* testimonials */
+.testi{position:relative;background:
+    linear-gradient(160deg,rgba(238,244,245,.94),rgba(234,242,244,.9)),
+    url("hero_clinic.webp") center/cover fixed;}
+.t-wrap{max-width:720px;margin:0 auto;text-align:center;position:relative;}
+.t-slide{display:none;}
+.t-slide.active{display:block;animation:fadeIn .6s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.t-slide .stars{color:var(--amber);font-size:18px;letter-spacing:4px;margin-bottom:20px;}
+.t-slide p{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(19px,2.4vw,26px);color:var(--navy-deep);line-height:1.55;}
+.t-slide .who{margin-top:22px;color:#5b6c73;font-size:14px;}
+.dots{display:flex;justify-content:center;gap:10px;margin-top:34px;}
+.dot{width:8px;height:8px;border-radius:50%;background:#c7d6da;cursor:pointer;}
+.dot.active{background:var(--navy);width:22px;border-radius:5px;transition:.3s;}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+.contact-info h2{font-size:clamp(28px,3.6vw,42px);color:var(--navy-deep);margin-bottom:20px;}
+.contact-info p{color:#5b6c73;line-height:1.7;max-width:420px;margin-bottom:30px;}
+.info-row{display:flex;gap:16px;margin-bottom:18px;font-size:15px;}
+.info-row b{color:var(--navy);min-width:100px;display:inline-block;}
+form{background:#fff;padding:44px;border-radius:16px;box-shadow:0 20px 50px -25px rgba(27,75,102,.3);}
+form label{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#5b6c73;display:block;margin-bottom:8px;}
+.field{margin-bottom:20px;}
+form input,form select,form textarea{width:100%;border:1px solid var(--line);padding:14px 16px;border-radius:8px;font-family:'Source Sans 3';font-size:14px;background:#fbfdfd;}
+form button{width:100%;background:var(--navy);color:#fff;border:none;padding:16px;border-radius:8px;font-weight:600;margin-top:6px;cursor:pointer;transition:.3s;}
+form button:hover{background:var(--navy-deep);}
+
+footer{background:var(--navy-deep);color:#a9c2cb;padding:50px 0;text-align:center;font-size:13px;}
+footer .flogo{font-family:'Playfair Display',serif;color:#fff;font-size:20px;margin-bottom:10px;}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.show{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  form{padding:32px;}
+  section{padding:80px 0;}
+}
+
+@media(max-width:600px){
+  .wrap{padding:0 16px;}
+  section{padding:60px 0;}
+  form{padding:24px;}
+  .hero-actions{flex-direction:column;gap:12px;}
+  .btn-primary,.btn-ghost{width:100%;text-align:center;}
+  .contact-grid{grid-template-columns:1fr;}
+}
+
+@media(max-width:900px){
+  .navlinks{display:none;}
+  .burger{display:flex;}
+  .spec-grid{grid-template-columns:1fr;}
+  .process-list{grid-template-columns:1fr 1fr;}
+  .gallery-grid{columns:2;}
+  .contact-grid{grid-template-columns:1fr;}
+  .specialty-strip div{border-right:none;padding:10px 20px;}
+}
+
+  /* RESPONSIVE FIXES */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { width: 100%; overflow-x: hidden; }
+  
+  @media (max-width: 768px) {
+    .wrap { padding: 0 16px !important; }
+    .hero-grid { grid-template-columns: 1fr !important; gap: 30px !important; }
+    .about-grid { grid-template-columns: 1fr !important; }
+    .carousel { gap: 16px !important; }
+    .card { min-width: 280px !important; }
+    .section-head { flex-direction: column !important; gap: 20px !important; }
+    .navlinks { display: none !important; }
+    .burger { display: flex !important; }
+    h1 { font-size: 28px !important; }
+    h2 { font-size: 24px !important; }
+    h3 { font-size: 18px !important; }
+    section { padding: 60px 0 !important; }
+  }
+  
+  @media (max-width: 480px) {
+    .wrap { padding: 0 12px !important; }
+    h1 { font-size: 22px !important; }
+    h2 { font-size: 18px !important; }
+    .hero { padding-top: 80px !important; }
+    .hero-visual { height: 300px !important; }
+    .stat-card { position: static !important; margin-top: 20px !important; }
+  }
+
+</style>
+</head>
+<body>
+<header id="header">
+<div class="wrap">
+<nav>
+<div class="logo">Clínica <span>Vitalis</span></div>
+<div class="navlinks">
+<a href="#especialidades">Especialidades</a>
+<a href="#equipe">Equipe médica</a>
+<a href="#galeria">Estrutura</a>
+<a class="navcta" href="#contato">Marcar consulta</a>
+</div>
+<div class="burger"><span></span><span></span><span></span></div>
+</nav>
+</div>
+</header>
+<section class="hero">
+<div class="hero-bg">
+<svg preserveaspectratio="none" viewbox="0 0 1440 400"><path d="M0,200 Q120,140 240,200 T480,200 T720,140 T960,200 T1200,180 T1440,200" fill="none" stroke="#7FB3B0" stroke-width="2"></path></svg>
+</div>
+<div class="wrap hero-content">
+<div class="eyebrow">Medicina multidisciplinar</div>
+<h1>Cuidado médico completo, <em>com</em> uma só equipe ao seu lado.</h1>
+<p>A Clínica Vitalis reúne 12 especialidades em um único endereço, com tecnologia diagnóstica avançada e um time médico dedicado a acompanhar sua saúde em todas as fases da vida.</p>
+<div class="hero-actions">
+<a class="btn-primary" href="#contato">Marcar consulta</a>
+<a class="btn-outline" href="#especialidades">Conhecer especialidades</a>
+</div>
+<div class="specialty-strip">
+<div><div class="num">12</div><div class="lbl">especialidades</div></div>
+<div><div class="num">34</div><div class="lbl">médicos especialistas</div></div>
+<div><div class="num">98%</div><div class="lbl">satisfação dos pacientes</div></div>
+<div><div class="num">22</div><div class="lbl">anos de história</div></div>
+</div>
+</div>
+</section>
+<section id="especialidades">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="eyebrow">O que tratamos</div>
+<h2>Especialidades sob o mesmo cuidado.</h2>
+<p>Cada área conta com médicos titulados e equipamentos próprios de diagnóstico, evitando encaminhamentos desnecessários.</p>
+</div>
+<div class="spec-grid">
+<div class="spec-card reveal"><img alt="Cardiologia" decoding="async" fetchpriority="high" loading="eager" src="hero.webp"/><div class="body"><div class="tag">Coração</div><h3>Cardiologia</h3><p>Ecocardiograma, teste ergométrico e acompanhamento clínico completo.</p></div></div>
+<div class="spec-card reveal"><img alt="Clínica geral" decoding="async" fetchpriority="high" loading="lazy" src="img_0.webp"/><div class="body"><div class="tag">Base</div><h3>Clínica Geral</h3><p>Check-ups periódicos e gestão contínua de condições crônicas.</p></div></div>
+<div class="spec-card reveal"><img alt="Ortopedia" decoding="async" loading="lazy" src="img_1.webp"/><div class="body"><div class="tag">Movimento</div><h3>Ortopedia</h3><p>Diagnóstico por imagem no local e reabilitação físico-funcional.</p></div></div>
+<div class="spec-card reveal"><img alt="Dermatologia" decoding="async" loading="lazy" src="img_2.webp"/><div class="body"><div class="tag">Pele</div><h3>Dermatologia</h3><p>Dermatoscopia digital e tratamentos clínicos e estéticos.</p></div></div>
+<div class="spec-card reveal"><img alt="Ginecologia" decoding="async" loading="lazy" src="img_3.webp"/><div class="body"><div class="tag">Mulher</div><h3>Ginecologia</h3><p>Cuidado integral do pré-natal à menopausa, com equipe exclusivamente feminina.</p></div></div>
+<div class="spec-card reveal"><img alt="Pediatria" decoding="async" loading="lazy" src="img_4.webp"/><div class="body"><div class="tag">Infância</div><h3>Pediatria</h3><p>Acompanhamento do crescimento com espaço lúdico pensado para crianças.</p></div></div>
+</div>
+</div>
+</section>
+<section class="team" id="equipe">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="eyebrow" style="color:var(--amber)">Nosso corpo clínico</div>
+<h2>Médicos que lideram suas especialidades.</h2>
+<p>Profissionais com formação internacional e décadas de prática clínica combinada.</p>
+</div>
+<div class="team-carousel">
+<div class="team-track" id="teamTrack">
+<div class="doc-card"><img alt="Dra. Helena Prado" decoding="async" loading="lazy" src="img_5.webp"/><h3>Dra. Helena Prado</h3><div class="role">Cardiologia</div></div>
+<div class="doc-card"><img alt="Dr. Marcos Villela" decoding="async" loading="lazy" src="img_6.webp"/><h3>Dr. Marcos Villela</h3><div class="role">Ortopedia</div></div>
+<div class="doc-card"><img alt="Dra. Beatriz Nunes" decoding="async" loading="lazy" src="img_7.webp"/><h3>Dra. Beatriz Nunes</h3><div class="role">Ginecologia</div></div>
+<div class="doc-card"><img alt="Dr. Otávio Lima" decoding="async" loading="lazy" src="img_8.webp"/><h3>Dr. Otávio Lima</h3><div class="role">Dermatologia</div></div>
+<div class="doc-card"><img alt="Dra. Renata Sousa" decoding="async" loading="lazy" src="img_9.webp"/><h3>Dra. Renata Sousa</h3><div class="role">Pediatria</div></div>
+</div>
+<div class="carousel-nav">
+<button onclick="scrollTeam(-1)">←</button>
+<button onclick="scrollTeam(1)">→</button>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="wrap">
+<div class="section-head reveal">
+<div class="eyebrow">Como funciona</div>
+<h2>Da consulta ao acompanhamento contínuo.</h2>
+</div>
+<div class="process-list">
+<div class="process-item reveal"><div class="step">Passo 01</div><h3>Agendamento</h3><p>Marque online ou por telefone, com retorno em até 2 horas úteis.</p></div>
+<div class="process-item reveal"><div class="step">Passo 02</div><h3>Avaliação clínica</h3><p>Consulta detalhada com histórico completo e exame físico.</p></div>
+<div class="process-item reveal"><div class="step">Passo 03</div><h3>Diagnóstico</h3><p>Exames realizados no local, com resultado no mesmo dia sempre que possível.</p></div>
+<div class="process-item reveal"><div class="step">Passo 04</div><h3>Acompanhamento</h3><p>Plano terapêutico com revisões programadas e canal direto com a equipe.</p></div>
+</div>
+<img alt="Recepção da Clínica Vitalis" class="process-banner reveal" decoding="async" loading="lazy" src="img_10.webp"/>
+</div>
+</section>
+<section id="galeria">
+<div class="wrap">
+<div class="section-head reveal">
+<div class="eyebrow">Nossa estrutura</div>
+<h2>Um ambiente pensado para acolher.</h2>
+</div>
+<div class="gallery-grid">
+<img alt="Corredor da clínica" class="reveal" decoding="async" loading="lazy" src="img_11.webp"/>
+<img alt="Sala de espera" class="reveal" decoding="async" loading="lazy" src="img_12.webp"/>
+<img alt="Equipe médica reunida" class="reveal" decoding="async" loading="lazy" src="img_13.webp"/>
+<img alt="Equipamentos médicos" class="reveal" decoding="async" loading="lazy" src="img_14.webp"/>
+<img alt="Recepção clínica" class="reveal" decoding="async" loading="lazy" src="img_15.webp"/>
+<img alt="Consultório médico" class="reveal" decoding="async" loading="lazy" src="img_16.webp"/>
+</div>
+</div>
+</section>
+<section class="testi">
+<div class="wrap">
+<div class="section-head reveal"><div class="eyebrow">Depoimentos</div><h2>Quem passa pela Vitalis, recomenda.</h2></div>
+<div class="t-wrap">
+<div class="t-slide active"><div class="stars">★★★★★</div><p>"Resolvi em uma manhã o que levaria semanas em outros lugares — consulta, exame e resultado no mesmo dia."</p><div class="who">Patrícia G.</div></div>
+<div class="t-slide"><div class="stars">★★★★★</div><p>"A equipe médica realmente conversa entre si. Meu tratamento foi acompanhado por três especialistas de forma integrada."</p><div class="who">Eduardo T.</div></div>
+<div class="t-slide"><div class="stars">★★★★★</div><p>"Levo minha família toda há mais de 10 anos. Confiança que não tem preço."</p><div class="who">Marisa C.</div></div>
+<div class="dots" id="tdots"></div>
+</div>
+</div>
+</section>
+<section id="contato">
+<div class="wrap contact-grid">
+<div class="contact-info reveal">
+<h2>Agende sua consulta hoje.</h2>
+<p>Nossa central de atendimento responde em horário comercial estendido, todos os dias da semana.</p>
+<div class="info-row"><b>Endereço</b> Rua das Acácias, 1200 — Bela Vista, São Paulo</div>
+<div class="info-row"><b>Horário</b> Seg a Sáb — 07h às 21h</div>
+<div class="info-row"><b>Contato</b> (11) 3055-7788 · atendimento@clinicavitalis.com.br</div>
+</div>
+<form onsubmit="event.preventDefault(); alert('Solicitação enviada! Retornaremos em breve.');">
+<div class="field"><label>Nome completo</label><input required="" type="text"/></div>
+<div class="field"><label>Especialidade desejada</label>
+<select><option>Cardiologia</option><option>Ortopedia</option><option>Dermatologia</option><option>Ginecologia</option><option>Pediatria</option><option>Clínica geral</option></select>
+</div>
+<div class="field"><label>Telefone</label><input required="" type="text"/></div>
+<div class="field"><label>Observações</label><textarea rows="3"></textarea></div>
+<button type="submit">Solicitar agendamento</button>
+</form>
+</div>
+</section>
+<footer>
+<div class="wrap">
+<div class="flogo">Clínica Vitalis</div>
+<p>© 2026 Clínica Vitalis. Todos os direitos reservados.</p>
+</div>
+</footer>
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('header').classList.toggle('scrolled',window.scrollY>40);});
+const reveals=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');}),{threshold:.15});
+reveals.forEach(r=>io.observe(r));
+function scrollTeam(dir){document.getElementById('teamTrack').scrollBy({left:dir*300,behavior:'smooth'});}
+
+const slides=document.querySelectorAll('.t-slide');
+const tdots=document.getElementById('tdots');
+let cur=0;
+slides.forEach((s,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>showSlide(i);tdots.appendChild(d);});
+function showSlide(i){
+  slides[cur].classList.remove('active'); tdots.children[cur].classList.remove('active');
+  cur=i; slides[cur].classList.add('active'); tdots.children[cur].classList.add('active');
+}
+setInterval(()=>showSlide((cur+1)%slides.length),5000);
+</script>
+<div style="text-align:center; padding:20px; color:#9fb5b1; font-size:12px; background:#082B29;">feito por Júlia Assis/ word tecnologia</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('loaded'));
+    }
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('loaded'));
+    }
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('loaded'));
+    }
+  });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('loaded'));
+    }
+  });
+});
+</script>
+</body>
+</html>
